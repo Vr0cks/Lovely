@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurtarma Macerası</title> <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Sayfanın kaydırmasını engelle */
+            background-color: #000; /* Canvas dışındaki alanı siyah yapar */
+            display: flex;
+            justify-content: center; /* Canvas'ı yatayda ortala */
+            align-items: center; /* Canvas'ı dikeyde ortala */
+            height: 100vh; /* Body'nin yüksekliğini ekran yüksekliği kadar yap */
+        }
+        canvas {
+            border: 1px solid #fff; /* Canvas etrafına ince beyaz kenarlık */
+            image-rendering: pixelated; /* Pixel art görünümü için */
+            /* Canvas'ın kendi background color'ını kaldırdık, arka plan görseli/rengi JS ile çizilecek */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="game.js"></script> </body>
+</html>

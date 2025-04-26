@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Büyülü Salı</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      /* Bu stil sadece a etiketini buton gibi göstermek için */
+      .play-button-link {
+          display: inline-block; /* Buton gibi durması için */
+          padding: 15px 30px;
+          font-size: 1.5em;
+          cursor: pointer;
+          background-color: #4CAF50; /* Yeşil buton */
+          color: white;
+          text-decoration: none; /* Alt çizgiyi kaldır */
+          border: none; /* Kenarlığı kaldır */
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+          margin-top: 20px; /* Butonların arasına boşluk */
+          /* Senin hatun.css dosyanındaki .play-button stillerini buraya kopyalayabilir veya CSS'te .play-button-link için stil tanımlayabilirsin */
+      }
+
+      .play-button-link:hover {
+          background-color: #c6cc0d;
+      }
+
+      /* Senin hatun.css dosyanındaki diğer stiller */
+  </style>
+</head>
+<body>
+  <canvas id="snow"></canvas>
+
+  <button id="playButton" class="play-button">🎵 Sürprizi Dinle</button>
+
+  <div class="card" id="card">
+    <h1>Büyülü Salı</h1>
+    <p id="text">
+        Bir nefes olur esersin yârim,
+        İçimde umut besersin yârim,
+        Düşler içinde gezersin yârim,
+        Gözlerin gibi, gözlerin gibi.<br><br>
+      Bugün, küçük bir oyunla bir maceraya çıkalım mı?
+    </p>
+  </div>
+
+  <a href="oyun/oyun.html" class="play-button-link">🎮 Oyuna Başla</a> <audio id="player" src="müzik.mp3.mp3" loop preload="auto"></audio>
+  <div class="volume-control" style="display: none;">
+    🔊 Ses: <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.2">
+  </div>
+
+  <script src="script.js"></script>
+  <script src="kar.js"></script>
+
+  <script>
+    const player = document.getElementById("player");
+    const playButton = document.getElementById("playButton");
+    const volumeControl = document.querySelector(".volume-control");
+    const volumeSlider = document.getElementById("volumeSlider");
+    // bgMusic ve startGameBtn logic'i buradan kaldırıldı
+
+    // Oynatma ve durdurma işlevi (🎵 Sürprizi Dinle butonu için)
+    playButton.addEventListener("click", () => {
+      if (player.paused) {
+        player.play();
+        playButton.textContent = "⏸️ Durdur";
+        volumeControl.style.display = "block"; // Ses kontrolünü göster
+      } else {
+        player.pause();
+        playButton.textContent = "🎵 Sürprizi Dinle";
+        volumeControl.style.display = "none"; // Ses kontrolünü gizle
+      }
+    });
+
+    // Ses kontrolü (Sadece player audio için)
+    volumeSlider.addEventListener("input", (e) => {
+      player.volume = e.target.value;
+      // bgMusic.volume = e.target.value; // Kaldırıldı
+    });
+  </script>
+</body>
+</html>
